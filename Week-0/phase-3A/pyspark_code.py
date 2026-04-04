@@ -52,7 +52,7 @@ print("Total Rows (After Cleaning):", df_clean.count())
 city_count = df_clean.groupBy("city") \
     .agg(F.count("customer_id").alias("customer_count"))
 
-print("📊 Customers per City:")
+print("Customers per City:")
 city_count.show()
 
 # 6. STOP
