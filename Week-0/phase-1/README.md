@@ -1,31 +1,60 @@
-🌟 Phase 1 – SQL to PySpark (Foundation)
+# 🚀 Phase 1 – SQL to PySpark Foundations
 
-📘 What I Learned
+## 📌 Overview
 
-Gained a solid understanding of core DataFrame operations such as show(), select(), and filter()
-Learned how aggregation works in PySpark using groupBy()
-Understood the relationship between SQL queries and PySpark DataFrame transformations
-Realized that PySpark DataFrames function similarly to relational tables, making SQL knowledge highly useful
+This phase focuses on building a strong foundation in PySpark by translating basic SQL queries into DataFrame operations.
+The goal is to understand how structured data is handled in PySpark and how SQL concepts map to distributed data processing.
 
+---
 
-🛠️ What I Practiced
+## 🎯 Objective
 
-Displaying complete datasets using DataFrame methods
-Applying filters with conditions like city and age
-Extracting specific columns using select()
-Performing basic aggregations and counting records
+* Learn core PySpark DataFrame operations
+* Understand the relationship between SQL and PySpark
+* Perform basic data selection, filtering, and aggregation
+* Build confidence in handling structured datasets
 
+---
 
-⚠️ Challenges Faced
+## 🛠️ Operations Performed
 
-Interpreting how groupBy() behaves compared to SQL GROUP BY
-Adjusting to PySpark syntax while being used to SQL queries
-Initially finding it tricky to think in terms of DataFrame operations instead of SQL statements
+* Displaying data using `show()`
+* Selecting columns using `select()`
+* Filtering records using `filter()`
+* Performing aggregations using `groupBy()`
 
+---
 
-🎯 Outcome
+## 📊 Tasks Implemented
 
-Successfully able to translate basic SQL queries into PySpark code
-Built a strong foundation in DataFrame transformations
-Improved confidence in working with PySpark for structured data processing
+* Retrieved all records from the dataset
+* Filtered data based on conditions (city, age)
+* Selected specific columns for analysis
+* Counted total number of records
 
+---
+
+## 🧠 Key Learnings
+
+* PySpark DataFrames behave similarly to SQL tables
+* SQL queries can be directly mapped to PySpark transformations
+* Understanding transformations and actions is essential
+* Basic operations form the foundation for advanced data processing
+
+---
+
+## ⚠️ Challenges Faced
+
+* Adapting from SQL syntax to PySpark syntax
+* Understanding how conditions are applied in DataFrame operations
+* Interpreting transformation vs action concepts
+
+---
+
+## 🎯 Outcome
+
+* Successfully translated basic SQL queries into PySpark
+* Built confidence in using DataFrame operations
+* Established a strong foundation for advanced PySpark concepts
+
+---
