@@ -92,7 +92,7 @@ top_customers.show()
 print("📊 Final Report:")
 final_report.show()
 
-# 7. LOAD (Save Output)
+# 7. LOAD
 final_report.write.mode("overwrite").parquet("/tmp/final_report")
 
 # 8. STOP
