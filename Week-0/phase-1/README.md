@@ -23,9 +23,9 @@ Adjusting to PySpark syntax while being used to SQL queries
 Initially finding it tricky to think in terms of DataFrame operations instead of SQL statements
 
 
-
-
 🎯 Outcome
+
 Successfully able to translate basic SQL queries into PySpark code
 Built a strong foundation in DataFrame transformations
 Improved confidence in working with PySpark for structured data processing
+
