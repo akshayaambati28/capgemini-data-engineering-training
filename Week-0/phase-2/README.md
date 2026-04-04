@@ -7,6 +7,7 @@ Using sample datasets, I performed data cleaning, joins, and aggregations to sol
 
 
 🎯 Objective
+
 Strengthen SQL to PySpark conversion skills
 Work with real datasets instead of static examples
 Perform data cleaning and handle missing values
