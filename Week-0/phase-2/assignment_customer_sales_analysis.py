@@ -2,66 +2,62 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import count, sum, col, avg
 
 # Initialize Spark
-spark = SparkSession.builder.appName('SQL to PySpark - Phase 2').getOrCreate()
+spark = SparkSession.builder.appName('Spark Playground').getOrCreate()
 
-# Load Data
+# Load data
 customers = spark.read.format('csv').option('header', 'true').load('/samples/customers.csv')
-orders = spark.read.format('csv').option('header', 'true').load('/samples/orders.csv')
-
-# Data Cleaning
-customers = customers.dropna(subset=["customer_id"])
-orders = orders.dropna(subset=["customer_id"])
+orders = spark.read.format('csv').option('header', 'true').load('/samples/sales.csv')
 
 # Cast numeric column
-orders = orders.withColumn("order_amount", col("order_amount").cast("double"))
+orders = orders.withColumn("total_amount", col("total_amount").cast("double"))
 
-# Join datasets
+# Left join (to include customers with no orders)
 df = customers.join(orders, on="customer_id", how="left")
 
-# Total order amount for each customer
-df_total = df.groupBy("customer_id", "customer_name", "city").agg(
-    sum("order_amount").alias("total_spend")
+# 1. Total order amount for each customer
+df_total = df.groupBy("customer_id", "first_name", "last_name").agg(
+    sum("total_amount").alias("total_spent")
 )
 
 print("1. Total order amount for each customer")
 df_total.show()
 
-# Top 3 customers by total spend
+# 2. Top 3 customers by total spend
 print("2. Top 3 customers by total spend")
-df_total.orderBy(col("total_spend").desc()).limit(3).show()
+df_total.orderBy(col("total_spent").desc()).limit(3).show()
 
-# Customers with no orders
-df_no_orders = df.groupBy("customer_id", "customer_name").agg(
-    count("order_amount").alias("order_count")
+# 3. Customers with no orders
+df_no_orders = df.groupBy("customer_id", "first_name", "last_name").agg(
+    count("sale_id").alias("order_count")
 ).filter(col("order_count") == 0)
 
 print("3. Customers with no orders")
 df_no_orders.show()
 
-# City-wise total revenue
+# 4. City-wise total revenue
 df_city = df.groupBy("city").agg(
-    sum("order_amount").alias("total_revenue")
+    sum("total_amount").alias("city_revenue")
 )
 
 print("4. City-wise total revenue")
 df_city.show()
 
-# Average order amount per customer
-df_avg = df.groupBy("customer_id", "customer_name").agg(
-    avg("order_amount").alias("avg_order_value")
+# 5. Average order amount per customer
+df_avg = df.groupBy("customer_id", "first_name").agg(
+    avg("total_amount").alias("avg_order_value")
 )
 
 print("5. Average order amount per customer")
 df_avg.show()
 
-# Customers with more than one order
-df_multi = df.groupBy("customer_id", "customer_name").agg(
-    count("order_amount").alias("order_count")
+# 6. Customers with more than one order
+df_multi = df.groupBy("customer_id", "first_name").agg(
+    count("sale_id").alias("order_count")
 ).filter(col("order_count") > 1)
 
 print("6. Customers with more than one order")
 df_multi.show()
 
-# Sort customers by total spend descending
+# 7. Sort customers by total spend descending
 print("7. Customers sorted by total spend (desc)")
-df_total.orderBy(col("total_spend").desc()).show()
+df_total.orderBy(col("total_spent").desc()).show()
