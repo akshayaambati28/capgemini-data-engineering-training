@@ -1,0 +1,11 @@
+CustomerID,Name,Country,JoinDate,Sales,Category
+101,Alice,USA,15-01-2023,250,A
+102,Bob,india,01-05-2023,150,B
+103,Charlie,UK,20-02-2023,blank,C
+104,Alice,USA,15-01-2023,250,A
+105,Eve,UK,01-03-2023,300,Blank
+106,Mallory,New York,03-15-2023,400,B
+107,Trent,india,10-04-2023,350,B
+108,Bob,India,05-01-2023,150,B
+109,Oscar,USA,28-02-2023,500,A
+110,Peggy,UK,blank,450,C
